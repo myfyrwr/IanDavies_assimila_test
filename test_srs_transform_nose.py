@@ -43,12 +43,6 @@ def test_sin2LatLong2sin():
 	
 # print the sinusoidal coords of some extreme lat long values
 def test_BigLatLong2sin():
-	ll1 = (90,-180)
-	sinu =      SRS_Transform.LatLong2sin(ll1)
-	print (f'lat long ({ll1[0]},{ll1[1]}) is sinusoidal ({sinu[0]},{sinu[1]})')
-	ll2 = (-90,180)
-	sinu =      SRS_Transform.LatLong2sin(ll2)
-	print (f'lat long ({ll2[0]},{ll2[1]}) is sinusoidal ({sinu[0]},{sinu[1]})')
 	ll3 = (0,0)
 	sinu =      SRS_Transform.LatLong2sin(ll3)
 	print (f'lat long ({ll3[0]},{ll3[1]}) is sinusoidal ({sinu[0]},{sinu[1]})')
@@ -58,6 +52,12 @@ def test_BigLatLong2sin():
 	ll5 = (0,180)
 	sinu =      SRS_Transform.LatLong2sin(ll5)
 	print (f'lat long ({ll5[0]},{ll5[1]}) is sinusoidal ({sinu[0]},{sinu[1]})')
+	ll1 = (90,-180)
+	sinu =      SRS_Transform.LatLong2sin(ll1)
+	print (f'lat long ({ll1[0]},{ll1[1]}) is sinusoidal ({sinu[0]},{sinu[1]})')
+	ll2 = (-90,180)
+	sinu =      SRS_Transform.LatLong2sin(ll2)
+	print (f'lat long ({ll2[0]},{ll2[1]}) is sinusoidal ({sinu[0]},{sinu[1]})')
 
 def test_sin2LastLongExtreme():
 	ll = (0,180)
@@ -91,6 +91,13 @@ def test_too_big_sin2LatLong():
 	assert coords[0] == float('inf') 
 	assert coords[1] == float('inf') 
 	assert coords[2] == float('inf') 
+	# now do sin2lanlong with a coordinate that is not in the rangw of LatLong2sin
+	# - in one of the corner regions
+	sinu= (np.pi *R -1 ,np.pi *R /2.0 -1 )
+	coords = SRS_Transform.sin2LatLong( sinu)
+	print (coords)
+    # Seems to be returning a valid lat long pair. 
+    # isn't this wrong? If so, should maybe check values and log an error, return infs.
 	
 def test_sin2LastLongExact():
 	# Check the sinu conversion is doing what it's supposed to for some general values.

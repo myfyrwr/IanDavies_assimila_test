@@ -6,10 +6,14 @@ test_srs_transform_nose.py    - test functions for  srs_transform.py
 requirements.txt              - used to setup python environment.
 ------------------------------------
 Unpack these files into a directory 
+>git clone https://github.com/myfyrwr/IanDavies_assimula_test
+cd IanDavies_assimula_test
+
 cd to that directory and create a python environment 
 with a name of your choice, say 'envname' as follows: 
 
 >conda create -n envname python=3.8.11 anaconda
+say y when prompted.
 >conda activate envname
 >pip install -r requirements.txt --no-deps
 >pip install nose
@@ -26,4 +30,4 @@ Or to see the stdout
 There are other conversions to do (for instance lat/long <-> bng)
 and other formats. 
 Also other tests possible, but I concentrated on conversions to and from sinusoidal  
-and tests thereof in in the time available.
+and tests thereof in the time available.

@@ -70,7 +70,8 @@ class SRS_Transform:
 		"""
 		logging.info(callingFunc()[3] + f'( {sin_point[0]}, {sin_point[1]} )')
 		if (abs(sin_point[0]) > np.pi *cls.R or abs(sin_point[1]) > np.pi *cls.R/2.0):
-			logging.error(callingFunc()[3] + ":parameter out of range")
+			logging.error(callingFunc()[3] + \
+				f":parameter out of range:({sin_point[0]},{sin_point[1]})")
 			return (float('inf'), float('inf'), float('inf')) # or 'NaN' better?
 		return cls.transform_sin2bng.TransformPoint(sin_point[0], sin_point[1])
 
@@ -102,7 +103,8 @@ class SRS_Transform:
 		"""
 		logging.info(callingFunc()[3] + f'( {sin_point[0]}, {sin_point[1]} )')
 		if (abs(sin_point[0]) > np.pi *cls.R or abs(sin_point[1]) > np.pi *cls.R/2.0):
-			logging.error(callingFunc()[3] + ":parameter out of range")
+			logging.error(callingFunc()[3] + \
+				f":parameter out of range:({sin_point[0]},{sin_point[1]})")
 			return (float('inf'), float('inf'), float('inf')) # or should it be 'NaN' ?
 		return cls.transform_sin2LatLong.TransformPoint(sin_point[0], sin_point[1])
 	
