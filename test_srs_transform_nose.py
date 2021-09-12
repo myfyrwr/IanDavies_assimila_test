@@ -68,8 +68,9 @@ def test_sin2LastLongExtreme():
 	assert abs(sinu[1]) <= TOL9
 
 def test_too_big_sin2LatLong():
-	# these are expected to fail - because of the increment added to the first coord - 
-	# and should put an ERROR messages in the log file
+	# these are expected to fail - because of the increment added/subtracted 
+	# to/from the lat/longs,which are already at the limit of the domain.
+	# Each fail should put an ERROR messages in the log file
 	increment = 0.0001
 	coords = SRS_Transform.sin2LatLong( (np.pi *R +increment, 0))
 	print (coords)
@@ -91,13 +92,14 @@ def test_too_big_sin2LatLong():
 	assert coords[0] == float('inf') 
 	assert coords[1] == float('inf') 
 	assert coords[2] == float('inf') 
-	# now do sin2lanlong with a coordinate that is not in the rangw of LatLong2sin
+	# now do sin2lanlong with a coordinate that is not in the range of LatLong2sin
 	# - in one of the corner regions
 	sinu= (np.pi *R -1 ,np.pi *R /2.0 -1 )
 	coords = SRS_Transform.sin2LatLong( sinu)
 	print (coords)
 	# Seems to be returning a valid lat long pair. 
-	# isn't this wrong? If so, should maybe check values and log an error, return infs.
+	# isn't this wrong? If so, converter should maybe check param values,
+	# log an error, return infs.
 	
 def test_sin2LastLongExact():
 	# Check the sinu conversion is doing what it's supposed to for some general values.
