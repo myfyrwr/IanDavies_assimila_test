@@ -62,7 +62,7 @@ def test_BigLatLong2sin():
 def test_sin2LastLongExtreme():
 	ll = (0,180)
 	# Check the conversion is doing what it's supposed to for an extreme value.
-    # sinu[0] should be close to pi*R == half the circumference of the earth.
+	# sinu[0] should be close to pi*R == half the circumference of the earth.
 	sinu = SRS_Transform.LatLong2sin(ll)
 	assert abs(sinu[0] -np.pi *R ) <= TOL9
 	assert abs(sinu[1]) <= TOL9
@@ -96,8 +96,8 @@ def test_too_big_sin2LatLong():
 	sinu= (np.pi *R -1 ,np.pi *R /2.0 -1 )
 	coords = SRS_Transform.sin2LatLong( sinu)
 	print (coords)
-    # Seems to be returning a valid lat long pair. 
-    # isn't this wrong? If so, should maybe check values and log an error, return infs.
+	# Seems to be returning a valid lat long pair. 
+	# isn't this wrong? If so, should maybe check values and log an error, return infs.
 	
 def test_sin2LastLongExact():
 	# Check the sinu conversion is doing what it's supposed to for some general values.
